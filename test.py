@@ -65,11 +65,7 @@ import matplotlib.pyplot as plt
 
 ax = None
 
-df = pd.read_csv('new.txt', header=None,
-                     engine='python',sep=r"\s*")
-            
-pca = PCA(n_components=2)
-pca.fit(df)
+
 
 for i,filename in enumerate(['1_ShearNormalized.txt', '2_ShearNormalized.txt']):
     df = pd.read_csv(filename, header=None,
