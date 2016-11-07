@@ -1,0 +1,91 @@
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<script src="1_MomentNormalized.js"></script>
+	<script src="2_MomentNormalized.js"></script>
+	<title>title</title>
+	<style>
+		svg{
+			background-color:#ddd;
+		}
+	</style>
+</head>
+
+<body>
+<div class='main'>
+<svg id='plot0' width='500' height='500'></svg>
+<svg id='plot1' width='500' height='500'></svg>
+</div>
+<div class='time'>
+<svg id='time' width='1000' height='100'></svg>
+</div>
+<script>
+'use strict';
+
+//data1 = data1.slice(0,1400);
+//data2 = data2.slice(0,1350);
+
+function plot(data, svg){
+	var scaleX = d3.scaleLinear()
+	.domain(d3.extent(data, function(d){return d[0];}))
+	.range([0,parseInt(svg.style("width"))]);
+
+	var scaleY = d3.scaleLinear()
+	.domain(d3.extent(data, function(d){return d[1];}))
+	.range([0,parseInt(svg.style("height"))]);
+
+	svg.selectAll('circle').data(data).enter()
+	.append('circle')
+	.attr('cx', function(d){ return scaleX(d[0]);})
+	.attr('cy', function(d){ return scaleY(d[1]);})
+	.attr('r',3)
+	.attr('fill','rgba(0,0,255,0.3)');
+	
+	return scaleX;
+}
+
+
+
+plot(data1, d3.select('#plot0'));
+plot(data2, d3.select('#plot1'));
+
+var longData = data1.length > data2.length ? data1 : data2;
+var t = longData.map(function(d,i){return [i,d[0]];});
+var timeScale = plot(t, d3.select('#time'));
+
+
+d3.select('#time')
+	.append("g")
+    .attr("class", "brush")
+	.call(d3.brushX()
+		.on('brush end', onBrush)
+	);
+
+
+
+function onBrush(){
+	function colorSelector(d,i){
+		if ( i>=t0 && i<=t1)
+			return 'rgba(255,0,0,0.7)';
+		else
+			return 'rgba(0,0,255,0.2)';
+	}
+	var selectRange = d3.event.selection;
+	var t0=-1;
+	var t1=-1;
+	if (selectRange){
+		t0 = timeScale.invert(selectRange[0]);
+		t1 = timeScale.invert(selectRange[1]);
+	}
+	d3.select('#plot0').selectAll('circle')
+		.attr('fill',colorSelector);
+	d3.select('#plot1').selectAll('circle')
+		.attr('fill',colorSelector);
+}
+
+</script>
+
+
+</body>
+</html>
