@@ -95,6 +95,7 @@ for i,filename in enumerate(['1_ShearNormalized.txt', '2_ShearNormalized.txt']):
     #plt.colorbar()
 
     v1,v2,v3 = pca.components_
+    print (v1,v2)
     plt.subplot(2,2,i+3)
     plt.plot(v1 if i==0 else -v1,np.arange(13))
 

@@ -1,0 +1,114 @@
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<title>brush</title>
+	<style>
+		svg{
+			background: #eee;
+		}
+	</style>
+</head>
+
+<body>
+<svg id='plot1' width='500' height='500'></svg>
+<svg id='plot2' width='500' height='500'></svg>
+
+<script>
+'use strict';
+
+//random 4D data e.g [  [1,2,3,4], [3,2,1,4], ...]
+var data = d3.range(45).map(function(d,i){
+	var a = function(){
+		return Math.round(100 + Math.random() * 300);
+	}
+	var x = a();
+	return [x,
+		x + 0.1*a(),
+		x + 0.1*a(),
+		450-x/2 + 0.1*a()];
+})
+
+//regular plot
+d3.select('#plot1').selectAll('circle')
+.data(data).enter().append('circle')
+.attr('cx', function(d){return d[0];})
+.attr('cy', function(d){return d[1];})
+.attr('r', 5)
+.attr('fill', 'rgba(0,0,255,0.5)');
+
+d3.select('#plot2').selectAll('circle')
+.data(data).enter().append('circle')
+.attr('cx', function(d){return d[2];})
+.attr('cy', function(d){return d[3];})
+.attr('r', 5)
+.attr('fill', 'rgba(0,0,255,0.5)')
+
+var myb1 = d3.brush()
+    .on("brush end", updateb1);
+
+var myb2 = d3.brush()
+    .on("brush end", updateb2);
+
+//make svg response on brush
+d3.select('#plot1').append('g').call(myb1);
+d3.select('#plot2').append('g').call(myb2);
+
+//b1 and b2 are selected region, in pixel coord inside each svg
+
+var b1,b2;
+function updateb1(){
+    b1 = d3.event.selection;
+	
+	if (b1){
+		console.log('b1:');
+		console.log(b1[0][0],b1[0][1]);
+		console.log(b1[1][0],b1[1][1]);
+	}
+
+	onBrush();
+}
+
+function updateb2(){
+    b2 = d3.event.selection;
+	onBrush();
+}
+
+function onBrush(){
+	var allCircles = d3.select("body").selectAll("circle");
+    if (!b1 && !b2) {
+		allCircles.attr("fill", 'rgba(0,0,255,0.5)');
+		return;
+    }
+
+    function isSelected(d) {
+		//given a data point d, return whether it is inside the selected region(s)
+		if (!b1 && !b2){ return false;}
+		var result = true;
+		if (b1)
+			result = result && b1[0][0] <= d[0]
+					&& b1[1][0] >= d[0]
+					&& b1[0][1] <= d[1]
+					&& b1[1][1] >= d[1];
+		if (b2)
+			result = result && b2[0][0] <= d[2]
+					&& b2[1][0] >= d[2]
+					&& b2[0][1] <= d[3]
+					&& b2[1][1] >= d[3];
+		return result;
+			
+    }
+    
+	//change the attr of selected / non-selected
+    var selected = allCircles
+            .filter(isSelected)
+            .attr("fill", "rgba(255,0,255,0.7)");
+    var notSelected = allCircles
+            .filter(function(d) { return !isSelected(d); })
+            .attr("fill", "rgba(128,128,128,0.5)");
+}
+
+</script>
+
+</body>
+</html>
