@@ -3,7 +3,7 @@
 var filterdata = function (data){
     var dataTemp = [];
     for(var i=0; i<data.length;i++)
-        {if ((i%4)===0)
+        {if ((i%5)===0)
             {
                 dataTemp.push(data[i]);
                }
@@ -145,8 +145,8 @@ var myb1 = d3.brush()
 
 var myb2 = d3.brush()
 	.on("brush end", updateb2);
-d3.select('#plot1').call(myb1);
-d3.select('#plot2').call(myb2);
+//d3.select('#plot1').call(myb1);
+//d3.select('#plot2').call(myb2);
 //b1 and b2 are selected region, in pixel coord inside each svg
 var b1,b2;
 function updateb1(){
