@@ -87,19 +87,20 @@ for i,filename in enumerate(['1_ShearNormalized.txt', '2_ShearNormalized.txt']):
     #curve
     
     print(np.dot(projected[:,0],projected[:,1]))
-    plt.plot(t,projected[:,0],"r-",alpha=0.3)
-    plt.plot(t,(1 if i == 1 else -1)*projected[:,1],"b-",alpha=0.3)
+    plt.plot(t,projected[:,0],"r-",alpha=0.8)
+    plt.plot(t,(1 if i == 1 else -1)*projected[:,1],"b-",alpha=0.5)
+    plt.plot(t,(1 if i == 1 else -1)*projected[:,2],"k-",alpha=0.3)
     
-    plt.plot(t,projected[:,0]*projected[:,1],"k-",alpha=0.8)
+    #plt.plot(t,projected[:,0]*projected[:,1],"k-",alpha=0.8)
     plt.plot([0,len(df)],[0,0],"k-",alpha=0.3)
     #plt.colorbar()
 
     v1,v2,v3 = pca.components_
     print (v1,v2)
     plt.subplot(2,2,i+3)
-    plt.plot(v1 if i==0 else -v1,np.arange(13))
+    plt.plot(v1 if i==0 else -v1,np.arange(13),"r-",alpha=0.8)
 
-    plt.plot(v2,np.arange(13))
-    plt.plot(v3,np.arange(13))
+    plt.plot(v2,np.arange(13),"b-",alpha=0.5)
+    plt.plot(v3 if i == 0 else -v3,np.arange(13),"k-",alpha=0.3)
 
 plt.show()

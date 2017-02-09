@@ -23,8 +23,19 @@
 <script>
 'use strict';
 
-data1 = data1.slice(0,1400);
-data2 = data2.slice(0,1350);
+var filterdata = function (data){
+    var dataTemp = [];
+    for(var i=0; i<data.length;i++)
+        {if ((i%5)===0)
+            {
+                dataTemp.push(data[i]);
+               }
+           }
+    return dataTemp;           
+};
+
+data1 =filterdata(data1);
+data2 =filterdata(data2);
 
 function plot(data, svg){
 	var scaleX = d3.scaleLinear()

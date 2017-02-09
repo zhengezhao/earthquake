@@ -51,12 +51,16 @@ with open('period.txt') as f:
 		#print (i)
 		i= [float(j) for j in i][:int(len(i)/2)]
 		plt.plot(i,alpha=0.7)
+		break
 plt.show()
+
+
+
 #print (df)
 
 #plt.plot(df)
 #plt.show()
-'''
+
 #find the period 
 for i in range(10,len(lst)):
 	for j in range(10):
@@ -67,4 +71,3 @@ for i in range(10,len(lst)):
 	if j ==9:		
 		print (i,lst[i])
 		break
-'''

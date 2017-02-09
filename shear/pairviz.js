@@ -51,7 +51,7 @@ d3.select("#plot3")
     .data(data1)
     .enter()
     .append("path")
-    .attr("stroke","red")
+    .attr("stroke","blue")
     .attr("stroke-width",1)
     .attr('fill','none')
     .attr("d", function(d) {
@@ -64,7 +64,7 @@ d3.select("#plot4")
     .data(data2)
     .enter()
     .append("path")
-    .attr("stroke","red")
+    .attr("stroke","blue")
     .attr("stroke-width",1)
     .attr('fill','none')
     .attr("d", function(d) {
@@ -78,14 +78,14 @@ var cursorCurveData = {vs: [0,0,0,0,0,0,0,0,0,0,0,0,0]};
 var cursorCurve1 = d3.select("#plot3").append("g")
         .append("path")
         .datum(cursorCurveData)
-        .attr("stroke", "blue")
+        .attr("stroke", "red")
         .attr("stroke-width", "3")
         .attr("fill", "none");
 
 var cursorCurve2 = d3.select("#plot4").append("g")
         .append("path")
         .datum(cursorCurveData)
-        .attr("stroke", "blue")
+        .attr("stroke", "red")
         .attr("stroke-width", "3")
         .attr("fill", "none");
 

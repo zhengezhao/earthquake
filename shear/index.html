@@ -1,0 +1,36 @@
+<html>
+<head>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src='sim.txt'></script>
+</head>
+<svg width=600 height=600>
+<image xlink:href="foo.png" x="0" y="0" height="600px" width="600px"/>
+
+</svg>
+
+
+<script>
+var svg = d3.select('svg');
+var x = d3.scaleLinear()
+.domain([0,28])
+.range([25,585]);
+
+var y = d3.scaleLinear()
+.domain([0,28])
+.range([100,520]);
+
+var color=d3.scaleLinear()
+.domain([0,1])
+.range()
+
+svg.selectAll('text')
+.data(data)
+.enter()
+.append('text')
+.attr('x', function(d,i){return x(i%29)})
+.attr('y', function(d,i){return y(Math.floor(i/29))})
+.text(function(d){return d})
+.attr('font-size',5);
+
+</script>
+</html>
