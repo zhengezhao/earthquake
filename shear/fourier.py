@@ -3,7 +3,9 @@ import matplotlib.pyplot as plt
 from numpy.fft import fft
 
 xt = np.linspace(0,10000)/1000
+print (xt)
 xt = np.sin(xt) + 0.2*np.sin(0.01*xt)
+
 
 ft=fft(xt)
 
