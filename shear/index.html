@@ -1,7 +1,7 @@
 <html>
 <head>
-<script src="https://d3js.org/d3.v4.min.js"></script>
-<script src='sim.txt'></script>
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src='segmentssimilarityforEQ1EQ2.txt'></script>
 </head>
 <svg width=600 height=600>
 <image xlink:href="foo.png" x="0" y="0" height="600px" width="600px"/>
@@ -11,15 +11,15 @@
 
 <script>
 var svg = d3.select('svg');
-var x = d3.scaleLinear()
+var x = d3.scale.linear()
 .domain([0,28])
 .range([25,585]);
 
-var y = d3.scaleLinear()
+var y = d3.scale.Linear()
 .domain([0,28])
 .range([100,520]);
 
-var color=d3.scaleLinear()
+var color=d3.scale.linear()
 .domain([0,1])
 .range()
 

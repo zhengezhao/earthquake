@@ -11,8 +11,8 @@ def add_arrow(line, position=None, direction='right', size=30, color=None):
 
 	xdata = line.get_xdata()
 	ydata = line.get_ydata()
-	print (xdata)
-	print (ydata)
+	#print (xdata)
+	#print (ydata)
 
 	if position is None:
 		position = xdata.mean()
@@ -23,7 +23,7 @@ def add_arrow(line, position=None, direction='right', size=30, color=None):
 		end_ind = 1
 	else:
 		end_ind = 0
-	print (start_ind,end_ind)
+	#print (start_ind,end_ind)
 
 	line.axes.annotate('',
 		xytext=(xdata[start_ind], ydata[start_ind]),
@@ -34,20 +34,20 @@ def add_arrow(line, position=None, direction='right', size=30, color=None):
 
 
 
-segments=[[] for i in range(50)]
+segments=[[] for i in range(2)]
 
 #print (segments)
 
-for filenum in range(1,51):
-	filename ='/Users/zhengezhao/Desktop/ArizonaPhDstudy/git_zhenge/earthquake/shear/segmentscoordinateforEQ{0}'.format(str(filenum))+ '.txt'
+for j,filenum in enumerate([15,46]):
+	filename ='/Users/zhengezhao/Desktop/ArizonaPhDstudy/git_zhenge/earthquake/shear/newkernel/segmentscordinate/segmentscoordinateforEQ{0}'.format(str(filenum))+ '.txt'
 	data = np.genfromtxt(filename,delimiter=',')
 	for i in range(data.shape[0]):
 		#print ([data[i,0],data[i,1]])
-		segments[filenum-1].append((data[i,0],data[i,1]) )
+		segments[j].append((data[i,0],data[i,1]) )
 
 # x=np.arrage(50)
 # ys=[i+x+(i*x)**2 for i in range(50)]
-segments=segments[:1]
+#segments=segments[:1]
 #print (len(segments))
 colors = cm.rainbow(np.linspace(0, 1, len(segments)))
 
@@ -58,8 +58,8 @@ for s, c in zip(segments, colors):
 		x= s[i:i+2,0]
 		y= s[i:i+2,1]
 		#print (x,y)
-# plt.scatter(y[0][:,0], y[0][:,1], color=c)
-		line=plt.plot(x,y,".-",color=c)[0]
-		add_arrow(line)
+		plt.scatter(x, y, s=250,color=c)
+		#line=plt.plot(x,y,".",color=c)[0]
+		#add_arrow(line)
 plt.show()
 

@@ -86,7 +86,7 @@ plt.show()
 #print (time()-t0)
 #print (mperiod)
 
-for filenum1 in range(2,51):
+for filenum1 in range(1,51):
 	filename1 ='/Users/zhengezhao/Desktop/ArizonaPhDstudy/server/static/data/earthquakes/dataforEQ{0}/dataForSIM{0}'.format(str(filenum1))+ '/1_ShearNormalized.txt'
 	period1=13*earthquakeperiod[filenum1-1]
 	data1 = np.genfromtxt(filename1)
