@@ -1,9 +1,9 @@
-\BOOKMARK [1][]{section.3}{Introduction}{}% 1
-\BOOKMARK [1][]{section.5}{Related Work}{}% 2
-\BOOKMARK [1][]{section.6}{Research Plan}{}% 3
-\BOOKMARK [2][]{subsection.7}{Data Structure}{section.6}% 4
-\BOOKMARK [2][]{subsection.10}{Detailed Data View}{section.6}% 5
-\BOOKMARK [2][]{subsection.11}{Overview View}{section.6}% 6
-\BOOKMARK [3][-]{subsubsection.12}{NLP Model and Probability Product Kernel}{subsection.11}% 7
-\BOOKMARK [3][-]{subsubsection.13}{Matrix view}{subsection.11}% 8
-\BOOKMARK [1][]{section.14}{Conclusion and Future Directions}{}% 9
+\BOOKMARK [1][]{section.2}{Introduction}{}% 1
+\BOOKMARK [1][]{section.4}{Related Work}{}% 2
+\BOOKMARK [1][]{section.5}{Research Plan}{}% 3
+\BOOKMARK [2][]{subsection.6}{Data Structure}{section.5}% 4
+\BOOKMARK [2][]{subsection.9}{Detailed Data View}{section.5}% 5
+\BOOKMARK [2][]{subsection.10}{Overview View}{section.5}% 6
+\BOOKMARK [3][-]{subsubsection.11}{NLP Model and Probability Product Kernel}{subsection.10}% 7
+\BOOKMARK [3][-]{subsubsection.12}{Matrix view}{subsection.10}% 8
+\BOOKMARK [1][]{section.13}{Conclusion and Future Directions}{}% 9
