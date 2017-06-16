@@ -26,7 +26,7 @@
   \usepackage{graphicx}                % allow us to embed graphics files
   \DeclareGraphicsExtensions{.eps}     % for pure latex we expect eps files
 \fi%
-\usepackage[justification=centering]{caption}
+\usepackage{caption}
 %% it is recomended to use ``\autoref{sec:bla}'' instead of ``Fig.~\ref{sec:bla}''
 \graphicspath{{figures/}{pictures/}{images/}{./}} % where to search for the images
 
@@ -47,7 +47,7 @@
 \vgtccategory{Research}
 
 %% Paper title.
-\title{Using visualization To Understand  Earthquake Simulation Data}
+\title{Visualizing Earthquake Simulation Data}
 
 %% This is how authors are specified in the journal style
 
@@ -64,8 +64,12 @@
 
 %% Abstract section.
 \abstract{
-In the civil construction, the key for building a robust building is the resistance to different disasters. Earthquake is one of the main threatens. The impact of earthquakes on buildings is complex and controlled by different factors. Visualizing earthquake simulations in a way which civil engineers can have a comprehensive understanding of what happened when an earthquake is shaking the building as well as all the detailed attributes. It is a great challenge since there is no trivial solutions about how to visualizing multivariate, multi-scale temporal data.We propose several approaches to visualize the earthquake simulation data from different perspectives. We laso present a few methods to compare these complicated simulation data quantitatively. 
-%We haven't got to the evaluation part yet. Plans will be discussed in Section~\ref{sec:vis}
+  Computer simulations of the effect of earthquakes on built structures promise to let engineers understand different tradeoffs and designs at an attractively low cost.
+  In this scenario, the bottleneck for the expert is one of \emph{data understanding}: how do different building designs respond to different earthquakes?
+  What do the building failure modes have in common, and how does this compare to theoretical predictions?
+  The way in which a building responds to an earthquakes is complex and controlled by different factors.
+  In this poster, we present ongoing work in building a system for interactive visualization of earthquake simulation data, in collaboration with civil engineers who have run thousands of simulations, varying the height of the simulated buildings, ground acceleration, and building structure design.
+  We describe the challenges in the visualization of such multivariate time series data, and some of our proposed solutions.
 } % end of abstract
 
 %% Keywords that describe your work. Will show as 'Index Terms' in journal
@@ -83,16 +87,6 @@ In the civil construction, the key for building a robust building is the resista
 }
 
 % Comment below to remove teaser figure.
-   \teaser{
-    %\begin{figure}
-   	%\end{figure}
-   	\begin{minipage}{1\textwidth}
-   		\centering \raisebox{-0.5\height}{\includegraphics[width=.49\textwidth]{figs/vis1}} % first figure itself
-   		\raisebox{-0.5\height}{\includegraphics[width=0.37\textwidth]{figs/vis2}}
-   \caption{The views in the left part are used to compare the same atttribute of different simulation data: (A) adjacency matrix view to show the overall similarities for Shear attribute between 50 earthquake simulations;  (B) adjacency matrix view to demonstrates the similarities between different Shear segmentations(motifs) of two earthquake simulations(eq1 and eq21 in view (A)). The visualization on the right is built to describe one earthquake simulation: (C) Two Accerlation plots along time series; (D) Selective Heatmaps for demonstrating the simulation data; (E) 2D histogram to present the distributions of values for two selected attributes}
-\end{minipage}
-  }
-
 
 %%Uncomment below to disable the manuscript note
 \renewcommand{\manuscriptnotetxt}{}
@@ -114,8 +108,8 @@ In the civil construction, the key for building a robust building is the resista
 
 %% the only exception to this rule is the \firstsection command
 
-
 \firstsection{Introduction} % or "Motivation"
+
 \label{sec:myintro}
 \maketitle
 
