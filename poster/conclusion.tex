@@ -1,0 +1,14 @@
+\section{Conclusion and Future Directions}
+\label{sec:conclusion}
+
+Now let's review our tasks listed in Section 3. For task 1, we applied a NLP model and different kernel methods to summary the simulations as much as we can to get a overview quantitatively. For task 2, we build a context visulazation to illustrate the details of the specific simulation. The design principle of this view is to remain the ground truth as much as possible. For task3, we follow the focus and context design, which allows user to spot the earthquake simulation they are interested and explore it in the context view. The prototype looks promising for now, since it provides a way to explore the whole earthquake dataset. In the meanwhile, there are  a lot of points for us to complete.
+
+
+For the work we leave as future directions.
+\begin{itemize}
+\item Even with the adjacency matrix representation, the screen gets filled up when the the number of simulation gets larger. In the future, when we get thousands of simulations, the adjacency matrix is not fitable any more .It is also worth considering, if other selection, aggregation methods exist to show more data in the screen.
+\item The way we choose the period is so brutal which will for sure break the nature of the dataset. We should allow time series to split in a smarter way which different motifs of one simulation could various length according to the feature of the data.
+\item More views and interactions should be built for all these vies to give users different way to explore the dataset.A robust tool which wraps all the views together later.
+\item Clustering and classifications like k means and KNN could be done which will give user a way to profile earthquakes simulation. 
+\item Need evaluations from civil enigeers to test and verify the methods we use. 
+\end{itemize}

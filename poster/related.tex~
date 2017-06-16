@@ -1,0 +1,12 @@
+\section{Related Work}
+\label{sec:related}
+
+The problem of coursework similarity has been studied in the context of course recommendation system. Bendakir et al.~\cite{bendakir2006using} proposed a recommendation system based on decision tree of course history. Their approach, however, does not consider students' grades at all. Thus, their tool may wrongly correlate totally different courses simply due to historical mistakes. Sandvig et al.~\cite{sandvig2005aacorn} did use the GPA information, but GPA, as an average metric, doesn't say much about each specific class. 
+
+When it comes to the visualization problem. Since our goal is to cluster similar classes together, a node-link diagram naturally jumps into our mind. D3 library has a force-directed graph that is close to our needs. But we are hesitant about its fisheye distortion and curved link variant because these variants make it hard to click on nodes or edges for further details. We are also aware that force directed drawing is criticized for local minima. A multilevel approach~\cite{walshaw2000multilevel} might fix it but we are not focusing on algorithmic style improvement in this proposal.
+
+Other well-known techniques include Rheingold-Tilford Tree, whose tree hierarchy is too constrained to express clustered nodes~\cite{Reingold:1981:TDT:1313316.1313481}; arc diagram, whose purpose is to highlight existing cycles. We investigate but decide not to use them. 
+
+Eventually, we decided to use adjacency matrix instead of node-link diagrams, inspired by the study of matrix and graphs~\cite{Ghoniem:2004:CRG:1038262.1038777,VanHam:2003:UMC:1947368.1947409}. We also looked at the admirable work by F.Du et al.~\cite{du2016vis}. Their tool looks similar to ours at first glance but aims at student progress perspective rather than our course content centered perspective. However, we find their visual design interesting and could be one potential future direction of our tool.
+
+We heavily use the well-known d3 library~\cit{Bostock:2011:DDD:2068462.2068631} to create our tool.

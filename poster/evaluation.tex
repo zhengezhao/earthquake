@@ -1,0 +1,29 @@
+\section{Evaluation} % or "Research Plan"
+\label{sec:vis}
+
+In this section, we show some user studies and the results of your visualization. Since our data comes from a real world university, we can actually know the contents of each course and by consoling computer scientists, we can see if Coursim actually gives us some good perquisites for a chosen course. We also show our evaluation plan here for doing an actual user study.
+
+\subsection{Usage Scenario}
+\label{sec:usage}
+
+This case study shows three different usages of this tool. First, when a student comes to his advisor and asked him a question like “what courses do I need to take this semester if I eventually want to take CS482?” The professor doesn’t know how much about CS482, actually the professor is just a Math Doctor which his student takes the CS as a minor. But using our tool, when can find the course CS482 in the adjacency matrix and click the column. Then in the bar chart ( Fig. 8), he can easily figure out that the CS130 and CS343 have the highest benchmarks. Then he moves to the matrix and clicks on the gird of pair CS130 –CS482 and CS343-CS482. The parallel oordinates tell him the most the students are enhanced if they have taken CS130 and CS343. With this knowledge in mind, he can advise the two courses to his students without knowing what actually the two courses are. What's more, another interesting question a student may be wondering is that if he has taken a course, which course he may take next which will be easiler for him to get a high score. For this purpose, he can find the row of that course, and go through the row and find out the red girds. Then he can click on it and see the details in the bar chart and parallel coordinates. The last example is that it can be used to evaluate the setting of  the current prerequisites. We can easily achieve that by finding out the pair of courses and watch its actual ranks in the barchart. Using the bar chart and parallel, a professor can figure out if the current prerequisites is a good. Are there any other hidden prerequisites which have a higher benefit than the current one? Or what’s actual performance looks like for students taking the prerequisites?
+
+After plotting the pictures, we want to find out if the benchmarks work well. We pick up some pair of courses and find out the contents and titles of the university’s websites. The results shown are quite interesting. For example CS 365 and CS489, the benchmark we calculate is 11.2. CS365 is  Model of Computation and CS 489 is a topic course which includes Big Data Infrastructure, Complexity of Computational Problems and Introduction to Machine Learning, which include a lot of model computation.Some other pairs of courses with high benchmarks are also convinced by different domain specialists there are a lot of connections between these pairs. For instance, CS 135 Designing Functional Programs and CS 445: Software Requirements Specification and Analysis, CS 458: Computer Security and Privacy-CS 456 Computer Networks.
+
+
+\subsection{Evaluation Plan}
+\label{sec:plan}
+
+As we stated in the original proposal, an intermediate evaluation test would be comparing documented dependency to the overview drawn by our tool. The overview should be a superset of documented dependency but not close to a universal set. We can worry less about false positives because the prototype doesn't have a high density of highlighted cells.
+
+The above test can be automated relatively easily. We may not even need to get user involved. The ratio of identified documented dependency over all documented dependency should be the prime and only thing to look at in my opinion.
+
+After that, an evaluation of false positives may be carried out. I see two possibilities: first is to contact the academical advisor from our dataset's university to confirm the possible dependency revealed by our tool; second is to find a local academical advisor who is willing to share her data and apply our tool to it. In fact, doing both would be more convincing.
+
+Eventually, a user study should be done. We should have an academical advisor's feedback and improved the tool at this moment. We then ask the academical advisor to use this tool with students seeking advice, when they choose their courses. We need to be careful about the user groups here. Do we want to work with the same academical advisor all the time? Do we care about gender balance, student year(freshman, senior) balance?
+
+I think we should share this tool with a handful of academical advisors, to avoid the tool being too personalized. When their feedback conflicts, we record their argument first and ask them if they are willing  to discuss further. We end up either solving the issue or having one implementation but understanding the alternatives. 
+
+For a balanced student group, the question boils down to who's going to actually use this tool. If the tool is going to be used sololy with both student and academical advisor in presence, then we should accept whoever comes to the office and don't worry about balance at all. If the tool is going to be offered in the school system open to all students, we should invite students to evaluate it online in addition to academical office deployment. I'm more inclined to the first approach simply because it is easier to come true.
+
+Existing tools should be considered in doing all these evaluations. A survey should be taken, asking users to rate all three views on a Likert scheme, with an optional text box of why they like or hate any part. Depending on the skewness, we maybe need to throw away the top 5\% high and low gradings. The text feedback should be synthesized to explain the gradings of each view and discussed possible improvement.

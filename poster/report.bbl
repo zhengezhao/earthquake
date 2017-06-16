@@ -1,0 +1,78 @@
+\begin{thebibliography}{1}
+
+\bibitem{Biswas:2013:AIFEMDS:1077-2626}
+\href{http://dx.doi.org/10.1109/TVCG.2013.133}{A.~Biswas, S.~Dutta, H.-W. Shen,
+  and J.~Woodring}.
+\newblock \href{http://dx.doi.org/10.1109/TVCG.2013.133}{An information-aware
+  framework for exploring multivariate data sets}.
+\newblock \href{http://dx.doi.org/10.1109/TVCG.2013.133}{{\em IEEE Transactions
+  on Visualization and Computer Graphics}},
+  \href{http://dx.doi.org/10.1109/TVCG.2013.133}{19(12):2683 -- 2692},
+  \href{http://dx.doi.org/10.1109/TVCG.2013.133}{Dec. 2013}.
+  \href{http://dx.doi.org/10.1109/TVCG.2013.133}
+{doi: {{%
+10\hspace{.1pt}\discretionary{.}{%
+}{.}\hspace{.4pt}1109\discretionary{/}{%
+}{/}TVCG\hspace{.1pt}\discretionary{.}{%
+}{.}\hspace{.4pt}2013\hspace{.1pt}\discretionary{.}{%
+}{.}\hspace{.4pt}133}}}
+
+
+\bibitem{Bostock:2011:DDD:2068462.2068631}
+\href{http://dx.doi.org/10.1109/TVCG.2011.185}{M.~Bostock, V.~Ogievetsky, and
+  J.~Heer}.
+\newblock \href{http://dx.doi.org/10.1109/TVCG.2011.185}{D3 data-driven
+  documents}.
+\newblock \href{http://dx.doi.org/10.1109/TVCG.2011.185}{{\em IEEE Transactions
+  on Visualization and Computer Graphics}},
+  \href{http://dx.doi.org/10.1109/TVCG.2011.185}{17(12):2301--2309},
+  \href{http://dx.doi.org/10.1109/TVCG.2011.185}{Dec. 2011}.
+  \href{http://dx.doi.org/10.1109/TVCG.2011.185}
+{doi: {{%
+10\hspace{.1pt}\discretionary{.}{%
+}{.}\hspace{.4pt}1109\discretionary{/}{%
+}{/}TVCG\hspace{.1pt}\discretionary{.}{%
+}{.}\hspace{.4pt}2011\hspace{.1pt}\discretionary{.}{%
+}{.}\hspace{.4pt}185}}}
+
+
+\bibitem{Chourasia:2007:DRS:1247238.1247243}
+\href{http://dx.doi.org/10.1145/1247238.1247243}{A.~Chourasia}.
+\newblock \href{http://dx.doi.org/10.1145/1247238.1247243}{Digital re-creation
+  of a seven-story building shake during an earthquake}.
+\newblock \href{http://dx.doi.org/10.1145/1247238.1247243}{{\em Crossroads}},
+  \href{http://dx.doi.org/10.1145/1247238.1247243}{13(3):5--5},
+  \href{http://dx.doi.org/10.1145/1247238.1247243}{Mar. 2007}.
+  \href{http://dx.doi.org/10.1145/1247238.1247243}
+{doi: {{%
+10\hspace{.1pt}\discretionary{.}{%
+}{.}\hspace{.4pt}1145\discretionary{/}{%
+}{/}1247238\hspace{.1pt}\discretionary{.}{%
+}{.}\hspace{.4pt}1247243}}}
+
+
+\bibitem{DBLP:journals/corr/abs-cs-0610033}
+\href{http://arxiv.org/abs/cs/0610033}{M.~Cuturi, J.~Vert, {\O}.~Birkenes, and
+  T.~Matsui}.
+\newblock \href{http://arxiv.org/abs/cs/0610033}{A kernel for time series based
+  on global alignments}.
+\newblock \href{http://arxiv.org/abs/cs/0610033}{{\em CoRR}},
+  \href{http://arxiv.org/abs/cs/0610033}{abs/cs/0610033},
+  \href{http://arxiv.org/abs/cs/0610033}{2006}.
+
+\bibitem{conf/icml/KondorJ03}
+\href{http://dblp.uni-trier.de/db/conf/icml/icml2003.html#KondorJ03}{R.~Kondor
+  and T.~Jebara}.
+\newblock
+  \href{http://dblp.uni-trier.de/db/conf/icml/icml2003.html#KondorJ03}{A kernel
+  between sets of vectors.}
+\newblock
+  \href{http://dblp.uni-trier.de/db/conf/icml/icml2003.html#KondorJ03}{In
+  T.~Fawcett and N.~Mishra, eds., {\em ICML}},
+  \href{http://dblp.uni-trier.de/db/conf/icml/icml2003.html#KondorJ03}{pp.
+  361--368}.
+  \href{http://dblp.uni-trier.de/db/conf/icml/icml2003.html#KondorJ03}{AAAI
+  Press},
+  \href{http://dblp.uni-trier.de/db/conf/icml/icml2003.html#KondorJ03}{2003}.
+
+\end{thebibliography}
