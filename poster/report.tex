@@ -1,4 +1,4 @@
-\documentclass[journal]{vgtc}                % final (journal style)
+\documentclass{vgtc}                % final (journal style)
 %documentclass[review,journal]{vgtc}         % review (journal style)
 %\documentclass[widereview]{vgtc}             % wide-spaced review
 %\documentclass[preprint,journal]{vgtc}       % preprint (journal style)
@@ -52,19 +52,16 @@
 %% This is how authors are specified in the journal style
 
 %% indicate IEEE Member or Student Member in form indicated below
-\author{Zhenge Zhao, Youhao Wei, Joshua A. Levine, Matthew Berger, Danilo Motta, Carlos Scheidegger}
-\authorfooter{
-%% insert punctuation at end of each item
-\item
- E-mail:[zhengezhao,cscheid]@email.arizona.edu.
-}
+\author{Zhenge Zhao\thanks{zhengezhao@email.arizona.edu}, Youhao Wei,\thanks{youhaowei@email.arizona.edu} Joshua A. Levine\thanks{josh@email.arizona.edu}, Matthew Berger\thanks{matthewberger@email.arizona.edu}, Danilo Motta\thanks{ddanilomotta@gmail.com}, Carlos Scheidegger\thanks{cscheid@email.arizona.edu}}
+%%\affiliation{\scriptsize University of Arizona}
+
 
 %other entries to be set up for journal
 %\shortauthortitle{Firstauthor \MakeLowercase{\textit{et al.}}: Paper Title}
 
 %% Abstract section.
 \abstract{
-  Computer simulations of the effect of earthquakes on built structures promise to let engineers understand different tradeoffs and designs at an attractively low cost.
+  Computer simulations of the effect of earthquakes on built structures promise to let engineers understand different trade offs and designs at an attractively low cost.
   In this scenario, the bottleneck for the expert is one of \emph{data understanding}: how do different building designs respond to different earthquakes?
   What do the building failure modes have in common, and how does this compare to theoretical predictions?
   The way in which a building responds to an earthquakes is complex and controlled by different factors.
@@ -74,17 +71,14 @@
 
 %% Keywords that describe your work. Will show as 'Index Terms' in journal
 %% please capitalize first letter and insert punctuation after last keyword
-\keywords{Visualization, Multivariate time series, Earthquake Simulation, NLP, Kernel}
+%%\keywords{Visualization, Multivariate time series, Earthquake Simulation, NLP, Kernel}
 
 %% ACM Computing Classification System (CCS). 
 %% See <http://www.acm.org/class/1998/> for details.
 %% The ``\CCScat'' command takes four arguments.
 
-\CCScatlist{CHANGE ME:
- \CCScat{K.6.1}{Management of Computing and Information Systems}%
-{Project and People Management}{Life Cycle};
- \CCScat{K.7.m}{The Computing Profession}{Miscellaneous}{Ethics}
-}
+\CCScatlist{Visualization, Multivariate time series, Earthquake Simulation, NLP, Kernel}
+
 
 % Comment below to remove teaser figure.
 

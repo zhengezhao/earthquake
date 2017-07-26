@@ -1,10 +1,10 @@
 \section{Ongoing work} % or "Research Plan"
 \label{sec:vis}
 
-Our ultimate goal is to build infrastructure to enable civil engineers to visually compare these multi-variate temporal data. In collaboration with the domain exoerts, we arrived at the following visualization tasks:
+Our ultimate goal is to build infrastructure to enable civil engineers to visually compare these multi-variate temporal data. In collaboration with the domain experts, we arrived at the following visualization tasks:
 \begin{itemize}
 	\item [T1] An overview which summarizes all the earthquake simulations and can help them spotting outliers;
-	\item [T2] For a specific earthquake simulation, a context view to explore the multiviate dataset and help engineers find interesting patterns across time;
+	\item [T2] For a specific earthquake simulation, a context view to explore the multivariate dataset and help engineers find interesting patterns across time;
 	\item [T3] For the two views above, build efficient navigation and interaction between them;
         \item [T4] When an interesting event is identified, it should be possible to find similar events on other simulations, so the context in which these events happened can be compared.
 \end{itemize} 
@@ -40,7 +40,7 @@ The current prototype is implemented in Javascript using D3~\cite{Bostock:2011:D
 
 \paragraph*{NLP Model and Probability Product Kernel for cross-earthquake comparisons}
 \label{sec:method}
-A different view (left part of Fig. 1) organizes the entire dataset more abstractly. For example, suppose we want to compare the shear value across different earthquakes. Based on the fact and observation that simulation data has periodic features, we use a bag-of-words analogy inspired from Natural Language Processing (NLP). We spli each earthquake simulation into a set of segments with a fixed period (P), producing segments that are represented as  $13 \times P$ matrices. After applying the segmentation, each earthquake simulation becomes a set of matrices (the ``words'' in the bag of words, which we call ``motifs''). For any two motifs coming from two earthquakes (of possibly different periods), we compare them directly as continuous time series, by upsampling the shorter motif to the length of the longer. After representing simulations as motifs, we calculate the similarity between any two earthquake simulations by mapping the set of motifs to a Gaussian distribution in Hilbert space, and use Bhattacharyya's similarity to compare the earthquakes~\cite{conf/icml/KondorJ03}.
+A different view (left part of Fig. 1) organizes the entire dataset more abstractly. For example, suppose we want to compare the shear value across different earthquakes. Based on the fact and observation that simulation data has periodic features, we use a bag-of-words analogy inspired from Natural Language Processing (NLP). We split each earthquake simulation into a set of segments with a fixed period (P), producing segments that are represented as  $13 \times P$ matrices. After applying the segmentation, each earthquake simulation becomes a set of matrices (the ``words'' in the bag of words, which we call ``motifs''). For any two motifs coming from two earthquakes (of possibly different periods), we compare them directly as continuous time series, by upsampling the shorter motif to the length of the longer. After representing simulations as motifs, we calculate the similarity between any two earthquake simulations by mapping the set of motifs to a Gaussian distribution in Hilbert space, and use Bhattacharyya's similarity to compare the earthquakes~\cite{conf/icml/KondorJ03}.
 
 %TODO: add formula
 \paragraph*{Matrix diagram views}
