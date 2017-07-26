@@ -1,0 +1,61 @@
+VIS 2017 Posters
+
+Reviews of submission #218: "Using visualization To Understand 
+Earthquake Simulation Data"
+
+------------------------ Submission 218, Review 2 ------------------------
+
+Reviewer:           primary
+Overall rating:     3  (scale is 1..5; 5 is best)
+
+Overall Rating
+
+   3  (Borderline: This poster might be acceptable with changes.)
+
+Expertise
+
+   3  (Knowledgeable)
+
+The Review
+
+   The poster details a system for the visualization of earthquake
+   experiments from a shake table. The task description is too generic –
+   from the formulation, it is not clear how the specific design follows.
+   The description jumps between high-level (tasks) and low-level
+   (implementation). I believe if this is cleaned up, this would be a good
+   poster.
+
+   Also, please utilize a spell checker, and use the correct template (not
+   the TVCG one).
+
+
+------------------------ Submission 218, Review 1 ------------------------
+
+Reviewer:           secondary
+Overall rating:     3  (scale is 1..5; 5 is best)
+
+Overall Rating
+
+   3  (Borderline: This poster might be acceptable with changes.)
+
+Expertise
+
+   3  (Knowledgeable)
+
+The Review
+
+   The poster describes an interesting system for the visualization of
+   earthquake experiments on a shake table. The approach of using NLP /  bag
+   of words of the recorded signals seems novel. However, the abstract is a
+   bit unfocused and reads a bit choppy (e.g., implementation details thrown
+   in between tasks and description of method. There is no connection
+   between the tasks listed and the analysis/visualization. How does the
+   analysis/visualization address the task requirements. Further, some
+   motivation of the choices for the analysis/visualization method should be
+   given (do not only describe how you visualize things but also why this is
+   useful). The abstract uses the wrong template (TVCG instead of
+   conference) and needs to be reformatted. The authors should also run a
+   spell-checker and perform a proof-reading pass.
+
+
+
