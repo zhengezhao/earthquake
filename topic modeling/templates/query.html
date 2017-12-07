@@ -1,0 +1,57 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Query Page</title>
+
+</head>
+<style>
+
+.container {
+    width: 1200px;
+    margin: auto;
+}
+#first {
+    width: 600px;
+    float: left;
+}
+#second {
+    width: 600px;
+    float: right;
+
+}
+</style>
+
+<body>
+    <h1>Query</h1>
+
+
+<div class='container'>
+    <div id="first">
+
+     <select id="selectNumber" onchange="changenum()">
+      <option value = "" >Choose a number</option>
+    </select>
+      <span id="show_eq"></span>
+      <p>Brush on some part and Click the button to find the most similar part in other earthquakes</p>
+      <button onclick="find_NN()">Submit</button>
+    </div>
+
+    <div id="second">
+      <span id="show_eq_query"></span>
+    </div>
+</div>
+
+<script type=text/javascript src="{{url_for('static', filename='jquery.js')}}"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://d3js.org/d3-collection.v1.min.js"></script>
+<script src="https://d3js.org/d3-dispatch.v1.min.js"></script>
+<script src="https://d3js.org/d3-dsv.v1.min.js"></script>
+<script src="https://d3js.org/d3-request.v1.min.js"></script>
+<script type=text/javascript src="{{url_for('static', filename='main.js')}}"></script>
+
+
+</body>
+
+</html>
