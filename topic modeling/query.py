@@ -3,7 +3,7 @@ import sys
 from numpy.fft import fft
 import matplotlib as plot
 from flask import Flask, render_template, request, url_for, jsonify
-from flask.ext.cors import CORS, cross_origin
+from flask_cors import CORS, cross_origin
 import json
 
 num_top = 10
@@ -21,30 +21,33 @@ def jsonifydata(data):
             data_new.append({"i": i, "j": j, "value": v})
     return jsonify(data_new)
 
-def jsonifyresultdata(topmatchlist,length):
-    print("length",length)
+
+def jsonifyresultdata(topmatchlist, length):
+    #print("length", length)
 
     def jsonifyactualdata(data):
-        data_new=[]
-        for i,d in enumerate(data):
+        data_new = []
+        for i, d in enumerate(data):
             for j, v in enumerate(d):
                 data_new.append({"i": i, "j": j, "value": v})
         return data_new
 
-    data_result=[]
+    data_result = []
     for matches in topmatchlist:
-        result_value,result_index, result_eqnum = matches[0], matches[1], matches[2]
+        result_value, result_index, result_eqnum = matches[0], matches[1], matches[2]
 
         eq_result = data[quake_start[result_eqnum - 1]:quake_start[result_eqnum], :].T
-        #print(result_value,result_index, result_eqnum,eq_result.shape)
+        #print(result_value, result_index, type(result_eqnum), eq_result.shape, length)
+        '''
         if (result_index + length ) <= eq_result.shape[1]:
             eq_seg = [i[result_index:result_index+length] for i in eq_result]
             #print("don't exceed",len(eq_seg),len(eq_seg[0]))
         else:
             eq_seg=[ np.concatenate((i[result_index:len(i)+1], i[0: length-(len(i)-result_index)])) for i in eq_result]
             #print("exceed",len(eq_seg),len(eq_seg[0]))
-        pass_data = jsonifyactualdata(eq_seg)
-        data_result.append({"eqnum": result_eqnum, "data": pass_data, "value": result_value})
+        '''
+        pass_data = jsonifyactualdata(eq_result)
+        data_result.append({"eqnum": result_eqnum, "data": pass_data, "value": result_value, "index": int(result_index), "length": int(length)})
     return jsonify(data_result)
 
 
@@ -103,10 +106,61 @@ def maxshiftinnerproduct(v1, v2):
     a = np.array([wrapping_range_sum(i, l) for i in range(v2.shape[1])])
     b = xt
     c = np.sum(v1 ** 2)
-    #print(c)
+    # print(c)
     d = a - 2 * b + c
     # print(xt)
     return abs(np.min(d)), np.argmin(d)
+
+# new method using numpy.correlate
+
+
+def maxshiftinnerproductv2(v1, v2):
+    # if v1 is short than v2, flag =0, otherwise flag =1
+    flag = 0
+    v1 = np.array(v1)
+    v2 = np.array(v2)
+    if (v1.shape[1] > v2.shape[1]):
+        temp = v1
+        v1 = v2
+        v2 = temp
+        flag = 1
+    cs = np.sum(np.cumsum(v2 ** 2, axis=1), axis=0)
+    l = v1.shape[1]
+    # print(cs)
+
+    def range_sum(i, j):
+        if i <= 0:
+            lo = 0
+        elif i >= len(cs):
+            lo = cs[-1]
+        else:
+            lo = cs[i - 1]
+        if j <= 0:
+            hi = 0
+        elif j >= len(cs):
+            hi = cs[-1]
+        else:
+            hi = cs[j - 1]
+        return hi - lo
+
+    def wrapping_range_sum(i, l):
+        # print(i, l)
+        if i + l > len(cs):
+            # return range_sum(i, len(cs) - 1) + range_sum(0, len(cs) - i - l)
+            return range_sum(i, len(cs) - 1)
+        else:
+            return range_sum(i, i + l)
+
+    a = np.array([wrapping_range_sum(i, l) for i in range(v2.shape[1] - v1.shape[1] + 1)])
+    b = np.sum([np.correlate(v1[i], v2[i])[::-1] for i in range(v1.shape[0])], axis=0)
+    c = np.sum(v1 ** 2)
+    # print("c:",c)
+    # print("a:",a)
+    # print("b:",b)
+    d = a - 2 * b + c
+
+    return abs(np.min(d)), np.argmin(d)
+
 
 # this will generate a random sequence, and the sum of the column is one
 
@@ -124,8 +178,9 @@ def NN_Search(input):
     for i in range(len(quake_start) - 1):
         # for i in range(1):
         eq = data[quake_start[i]:quake_start[i + 1], :].T
-        maxvalue, index = maxshiftinnerproduct(input, eq)
-        match_list.append([maxvalue, index, i + 1])
+        if (len(input[0]) <= len(eq[0])):
+            maxvalue, index = maxshiftinnerproductv2(input, eq)
+            match_list.append([maxvalue, index, i + 1])
 
     match_list = sorted(match_list)
 
@@ -145,22 +200,17 @@ def get_data():
     eq = data[quake_start[eqnum - 1]:quake_start[eqnum], :].T
     return jsonifydata(eq)
 
+
 @app.route('/data_query', methods=["GET", "POST"])
 @cross_origin(origin='localhost', headers=['Content-Type', 'Authorization'])
 def get_data_query():
     dict_index = json.loads(request.get_data())
-    start,end,eqnum = int(dict_index['start']), int(dict_index['end']), int(dict_index['eqnum'])
-    length = end - start +1
+    start, end, eqnum = int(dict_index['start']), int(dict_index['end']), int(dict_index['eqnum'])
+    length = end - start + 1
     eq = data[quake_start[eqnum - 1]:quake_start[eqnum], :].T
-    input = [i[start:end+1] for i in eq]
+    input = [i[start:end + 1] for i in eq]
     topmatchlist = NN_Search(input)
-    return jsonifyresultdata(topmatchlist,length)
-
-
-
-
-
-
+    return jsonifyresultdata(topmatchlist, length)
 
 
 '''

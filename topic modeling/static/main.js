@@ -3,9 +3,12 @@ var eq_query=[];
 var start = 0;
 var end =0;
 var changed_num = "";
-var totalnum = '{{totalnum|safe}}';
 var options = [];
-for (var i = 1; i <= parseInt(50); i++) {
+
+// This one is width of the rectangle of the selected eq
+var width_result=0;
+
+for (var i = 1; i <= parseInt(parseInt(totalnum)); i++) {
   options.push(i);
 }
 
@@ -40,15 +43,16 @@ function changenum(){
       eq= JSON.parse(d.response);
       var maxwidth = d3.max(eq, d=>d.j);
       xScale.domain([0,maxwidth]);
+      width_result =  Math.ceil(500.0/maxwidth);
 
       d3.select("#eqplot").selectAll("rect").remove();
       d3.select("#eqplot")
         .callReturn(createRects)
-        .attr("x", function(d) { console.log(xScale(d.j), Math.floor(xScale(d.j))); return Math.floor(xScale(d.j)); })
-        .attr("width", Math.ceil(500.0/maxwidth*1.05) ) ;
+        .attr("x", function(d) { return Math.floor(xScale(d.j)); })
+        .attr("width", Math.ceil(500.0/maxwidth) ) ;
 
       var brush = d3.brushX()
-        .extent([[0,0],[500,110]])
+        .extent([[0,0],[500+Math.ceil(500.0/maxwidth),110]])
         .on("brush end", brushed);
 
       d3.select("#eqplot").append("g")
@@ -59,7 +63,7 @@ function changenum(){
         var s = d3.event.selection;
         if(s){
           start =  Math.floor(xScale.invert(s[0]));
-          end = Math.floor(xScale.invert(s[1]));
+          end = Math.floor(xScale.invert(Math.min(s[1],500) ) );
         }
       }
     });
@@ -86,17 +90,19 @@ function find_NN(){
         var eq_d = eq_query[i]["data"];
         var eq_n = eq_query[i]["eqnum"];
         var eq_value = eq_query[i]["value"];
+        var eq_index = eq_query[i]["index"];
+        var eq_length = eq_query[i]["length"];
         //console.log(eq_d);
         var maxwidth = d3.max(eq_d, d=>d.j);
         //console.log(maxwidth);
-        var x = d3.scaleLinear().range([0,xScale(end)-xScale(start)+1 ]).domain([0,maxwidth]);
+        //var x = d3.scaleLinear().range([0,xScale(end)-xScale(start)+1 ]).domain([0,maxwidth]);
         d3.select("#"+eqid).selectAll("rect").remove();
         d3.select("#"+eqid).selectAll("text").remove();
 
         d3.select("#"+eqid)
         .append("text")
-        .attr("x", 300)
-        .attr("y", 50 )
+        .attr("x", 150)
+        .attr("y", 130)
         .attr("text-anchor", "middle")
         .style("font-size", "20px")
         .style("text-decoration", "underline")
@@ -112,9 +118,19 @@ function find_NN(){
           .attr("height", 20)
           .attr("fill",function(d){return colorScales[d.i](d.value);})
         //  .attr("opacity",function(d){return d.value;})
-          .attr("x", function(d) { return Math.floor(x(d.j)); })
-          .attr("width", Math.ceil((xScale(end)-xScale(start))/maxwidth*1.05) ) ;
+        //  .attr("x", function(d) { return Math.floor(x(d.j)); })
+          .attr("x", function(d){return Math.floor(xScale(d.j));})
+          .attr("width", width_result);
+         // .attr("width", Math.ceil((xScale(end)-xScale(start))/maxwidth*1.05) ) ;
 
+        d3.select("#"+eqid)
+          .append("rect")
+          .attr("x",Math.floor(xScale(eq_index)))
+          .attr("y",0)
+          .attr("width",Math.floor(xScale(eq_index+eq_length)) - Math.floor(xScale(eq_index)) )
+          .attr("height",110)
+          .attr("fill","grey")
+          .attr("opacity",0.2);
 
 
       }
@@ -161,8 +177,8 @@ $(document).ready(function(){
   d3.select("#show_eq_query")
     .append("svg")
     .attr("id", eqid)
-    .attr("width", svgWidth)
-    .attr("height", svgHeight);
+    .attr("width", svgWidth*4)
+    .attr("height", svgHeight+40);
   }
 
 
